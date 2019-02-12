@@ -9,12 +9,16 @@ class Login extends React.Component {
             password: ' '
         }
     }
+    handleInputChange= e=> {
+        this.setState({ [e.target.name]: e.target.value})
+
+    }
 render(){
     return (
         <div className= "Login Form">
         <Form>
-        <Input required type="text" name= "username" placeholder= "Username..."/>
-        <Input  required type= "text" name= "password" placeholder= "Enter your password...."/>
+        <Input required type="text" name= "username" placeholder= "Username..." value= {this.state.username} onChange= {this.handleInputChange}/>
+        <Input  required type= "text" name= "password" placeholder= "Enter your password...." value= {this.state.password} onChange= {this.handleInputChange}/>
         <Button type= "submit">Login </Button>
         </Form>
         </div >
