@@ -18,7 +18,7 @@ class SignUp extends React.Component {
                     <Input required type="text" name="password" placeholder="Enter a password" />
                     <Input required type= "text" name= "email" placeholder = "Enter your email please?"/>
 
-                    <Button type="submit">Sign Me Up!</Button>
+                    <Button color="info" type="submit">Sign Me Up!</Button>
                 </Form>
             </div >
         )
