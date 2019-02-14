@@ -23,6 +23,12 @@ class App extends Component {
             >
               Log Out
             </NavLink>
+            <NavLink className="app-link" to="/login" exact>
+              Login
+            </NavLink>
+            <NavLink className="app-link" to="/signup" exact>
+              SignUp
+            </NavLink>
           </nav>
         </header>
         <Route exact path="/login" component={LogIn} />
