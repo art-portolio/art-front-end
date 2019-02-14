@@ -9,9 +9,25 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <LogIn />
-        <SignUp />
-        <Post />
+        <header className="App-Header">
+          <h1>Welcome to trEATs</h1>
+          <nav className="main-nav">
+            <NavLink className="app-link" to="/" exact>
+              Users
+            </NavLink>
+            <NavLink
+              onClick={this.logout}
+              className="app-link"
+              to="/login"
+              exact
+            >
+              Log Out
+            </NavLink>
+          </nav>
+        </header>
+        <Route exact path="/login" component={LogIn} />
+        <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/post" component={Post} />
       </div>
     );
   }
