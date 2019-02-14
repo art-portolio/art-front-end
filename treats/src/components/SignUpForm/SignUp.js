@@ -1,25 +1,37 @@
 import React from "react";
 import { Button, Form, Input } from "reactstrap";
 import axios from "axios";
+
 class SignUp extends React.Component {
-  state = {
-    user: {
-      username: " ",
-      password: " ",
-      fullName: " ",
-      email: " "
-    }
-  };
+  constructor() {
+    super();
+    this.state = {
+      username: "",
+      fullName: "",
+      email: "",
+      password: "",
+      loggedIn: false,
+      userImgUrl: ""
+    };
+  }
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
   signUp = event => {
+    const user = {
+      username: this.state.username,
+      fullName: this.state.fullName,
+      email: this.state.email,
+      password: this.state.password,
+      userImgUrl: this.state.userImgUrl
+    };
     event.preventDefault();
 
     axios
-      .post("https://backend-art.herokuapp.com/api/register", this.state)
+      .post("https://backend-art.herokuapp.com/api/register", user)
       .then(res => {
         localStorage.setItem("jwt", res.data.token);
+        this.setState({ loggedIn: true });
         this.props.history.push("/users");
       })
       .catch(err => {
@@ -44,24 +56,24 @@ class SignUp extends React.Component {
             type="text"
             name="username"
             placeholder="Username"
-            value={this.state.username}
             onChange={this.handleChange}
+            value={this.state.username}
           />
           <Input
             required
             type="text"
             name="password"
             placeholder="Enter a password"
-            value={this.state.password}
             onChange={this.handleChange}
+            value={this.state.password}
           />
           <Input
             required
             type="text"
             name="email"
             placeholder="Enter your email please?"
-            value={this.state.email}
             onChange={this.handleChange}
+            value={this.state.email}
           />
 
           <Button color="info" type="submit" onSubmit={this.signUp}>
