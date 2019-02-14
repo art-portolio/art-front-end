@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Route, withRouter, NavLink } from "react-router-dom";
 import "./App.css";
 import LogIn from "./components/Login/Login";
 import SignUp from "./components/SignUpForm/SignUp";
@@ -16,4 +17,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
