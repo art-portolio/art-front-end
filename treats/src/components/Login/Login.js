@@ -2,20 +2,29 @@ import React from "react";
 import axios from "axios";
 
 class LogIn extends React.Component {
-  state = {
-    username: " ",
-    password: " "
-  };
+  constructor() {
+    super();
+    this.state = {
+      username: " ",
+      password: " ",
+      loggedIn: false
+    };
+  }
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
   logIn = event => {
+    const user = {
+      username: this.state.username,
+      password: this.state.password
+    };
     event.preventDefault();
     axios
-      .post("https://backend-art.herokuapp.com/api/login", this.state)
+      .post("https://backend-art.herokuapp.com/api/login", user)
       .then(res => {
-        localStorage.setItem("jwt", res.data.token);
-        this.props.history.push("/api/users");
+        localStorage.setItem("token", res.data.token);
+        this.setState({ loggedIn: true });
+        this.props.history.push("/artists");
       })
       .catch(err => {
         console.error("Axios Error", err);
@@ -24,7 +33,7 @@ class LogIn extends React.Component {
   render() {
     return (
       <div className="form-container">
-        <form className="form" onSubmit={this.logIn}>
+        <form>
           <div>
             <label>Username</label>
             <input
@@ -44,7 +53,9 @@ class LogIn extends React.Component {
             />
           </div>
           <div>
-            <button type="submit">Sign In</button>
+            <button type="submit" onClick={this.logIn}>
+              Sign In
+            </button>
           </div>
         </form>
         <h3> Not a registered artist? Sign Up!</h3>

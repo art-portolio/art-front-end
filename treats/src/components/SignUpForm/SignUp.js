@@ -32,7 +32,7 @@ class SignUp extends React.Component {
       .then(res => {
         localStorage.setItem("jwt", res.data.token);
         this.setState({ loggedIn: true });
-        this.props.history.push("/users");
+        this.props.history.push("/artists");
       })
       .catch(err => {
         console.error("Axios Error: ", err);
@@ -76,7 +76,7 @@ class SignUp extends React.Component {
             value={this.state.email}
           />
 
-          <Button color="info" type="submit" onSubmit={this.signUp}>
+          <Button color="info" type="submit" onClick={this.signUp}>
             Sign Me Up!
           </Button>
         </Form>
