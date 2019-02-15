@@ -3,7 +3,7 @@ import { Route, withRouter, NavLink, Link } from "react-router-dom";
 import "./App.css";
 import LogIn from "./components/Login/Login";
 import SignUp from "./components/SignUpForm/SignUp";
-import Post from "./components/Post/Post";
+import PostForm from "./components/Post/PostForm";
 import ArtistsView from "./components/ArtistsView/ArtistsView";
 import styled, { css } from "styled-components";
 
@@ -13,7 +13,6 @@ const NavWrapper = styled.section`
   height: 30px;
   display: flex;
   justify-content: space-around;
-  flex
   .nav: active {
     border-bottom: 1px solid blue;
   }
@@ -38,7 +37,7 @@ class App extends Component {
         <Route path="/" component={Home} />
         <Route path="/login" component={LogIn} />
         <Route path="/signup" component={SignUp} />
-        <Route path="/post" component={Post} />
+        <Route path="/posts" component={PostForm} />
         <Route path="/artists" component={ArtistsView} />
       </div>
     );

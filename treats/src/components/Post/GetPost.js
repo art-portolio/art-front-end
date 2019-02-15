@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Post from "./Post";
+import Post from "./PostForm";
 
 class GetPost extends Component {
   constructor(props) {

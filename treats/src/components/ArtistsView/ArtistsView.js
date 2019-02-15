@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route, withRouter, NavLink } from "react-router-dom";
-import Post from "../Post/Post";
+import Post from "../Post/PostForm";
 import EditPost from "../Post/EditPost";
 import GetPost from "../Post/GetPost";
 
