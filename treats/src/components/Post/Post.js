@@ -16,7 +16,7 @@ class Post extends React.Component {
       .post("https://backend-art.herokuapp.com/api/posts", this.state)
       .then(res => {
         localStorage.setItem("jwt", res.data.token);
-        this.props.history.push("/api/posts");
+        this.props.history.push("/posts");
       })
       .catch(err => {
         console.error("Axios Error", err);

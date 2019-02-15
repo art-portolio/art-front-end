@@ -22,7 +22,7 @@ class LogIn extends React.Component {
     axios
       .post("https://backend-art.herokuapp.com/api/login", user)
       .then(res => {
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("jwt", res.data.token);
         this.setState({ loggedIn: true });
         this.props.history.push("/artists");
       })
@@ -33,7 +33,7 @@ class LogIn extends React.Component {
   render() {
     return (
       <div className="form-container">
-        <form>
+        <form onSubmit={this.logIn}>
           <div>
             <label>Username</label>
             <input
@@ -53,9 +53,7 @@ class LogIn extends React.Component {
             />
           </div>
           <div>
-            <button type="submit" onClick={this.logIn}>
-              Sign In
-            </button>
+            <button type="submit">Sign In</button>
           </div>
         </form>
         <h3> Not a registered artist? Sign Up!</h3>

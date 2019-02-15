@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Post from "./Post";
 
 class GetPost extends Component {
   constructor(props) {
@@ -21,7 +22,12 @@ class GetPost extends Component {
       .catch(err => console.log(err));
   }
   render() {
-    return <h1>Welcome to our posts</h1>;
+    return (
+      <div>
+        <h1>Welcome to our posts</h1>
+        <Post />
+      </div>
+    );
   }
 }
 export default GetPost;
