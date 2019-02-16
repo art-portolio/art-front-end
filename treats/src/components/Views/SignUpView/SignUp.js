@@ -30,9 +30,8 @@ class SignUp extends React.Component {
     axios
       .post("https://backend-art.herokuapp.com/api/register", user)
       .then(res => {
-        localStorage.setItem("jwt", res.data.token);
-        this.setState({ loggedIn: true });
-        this.props.history.push("/artists");
+        console.log(res);
+        this.props.history.push("/login");
       })
       .catch(err => {
         console.error("Axios Error: ", err);

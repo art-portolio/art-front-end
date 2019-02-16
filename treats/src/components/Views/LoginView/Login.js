@@ -7,6 +7,7 @@ class LogIn extends React.Component {
     this.state = {
       username: " ",
       password: " ",
+      userToken: " ",
       loggedIn: false
     };
   }
@@ -15,7 +16,7 @@ class LogIn extends React.Component {
   };
   logIn = event => {
     const user = {
-      username: this.state.username,
+      " username": this.state.username,
       password: this.state.password
     };
     event.preventDefault();
@@ -23,8 +24,8 @@ class LogIn extends React.Component {
       .post("https://backend-art.herokuapp.com/api/login", user)
       .then(res => {
         localStorage.setItem("jwt", res.data.token);
-        this.setState({ loggedIn: true });
-        this.props.history.push("/artists");
+        this.setState({ userToken: res.data.token });
+        this.props.history.push(`/home/${res.data.id}`);
       })
       .catch(err => {
         console.error("Axios Error", err);
@@ -33,7 +34,7 @@ class LogIn extends React.Component {
   render() {
     return (
       <div className="form-container">
-        <form onSubmit={this.logIn}>
+        <form>
           <div>
             <label>Username</label>
             <input
@@ -53,7 +54,9 @@ class LogIn extends React.Component {
             />
           </div>
           <div>
-            <button type="submit">Sign In</button>
+            <button type="submit" onClick={this.LogIn}>
+              Sign In
+            </button>
           </div>
         </form>
         <h3> Not a registered artist? Sign Up!</h3>

@@ -15,6 +15,7 @@ class PostForm extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
   postUp = event => {
+    const auth = { headers: { authorization: localStorage.getItem("jwt") } };
     const post = {
       postName: this.state.postName,
       fullName: this.state.imageUrl,
@@ -22,7 +23,7 @@ class PostForm extends React.Component {
     };
     event.preventDefault();
     axios
-      .post("https://backend-art.herokuapp.com/api/posts", post)
+      .post("https://backend-art.herokuapp.com/api/posts", post, auth)
       .then(res => {
         localStorage.setItem("jwt", res.data.token);
         this.props.history.push("/posts");

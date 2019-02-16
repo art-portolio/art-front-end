@@ -13,8 +13,9 @@ class GetPost extends Component {
     this.getPosts();
   }
   getPosts() {
+    const auth = { headers: { authorization: localStorage.getItem("jwt") } };
     axios
-      .get("https://backend-art.herokuapp.com/api/posts")
+      .get("https://backend-art.herokuapp.com/api/posts", auth)
       .then(res => {
         console.log(res.data);
         this.setState({ posts: res.data });
