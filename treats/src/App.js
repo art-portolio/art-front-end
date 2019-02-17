@@ -1,22 +1,23 @@
 import React, { Component } from "react";
 import { Route, withRouter, NavLink, Link } from "react-router-dom";
-import "./App.css";
-import LogIn from "./components/Views/LoginView/Login";
+
+import HomeView from "./components/Views/GuestView/HomeView";
+import ArtistView from "./components/Views/ArtistView/ArtistView";
+
+import LogIn from "./components/Views/LoginView/LoginView";
 import SignUp from "./components/Views/SignUpView/SignUp";
-import PostForm from "./components/Post/PostForm";
-import ArtistsView from "./components/ArtistsView/ArtistsView";
-import styled, { css } from "styled-components";
+
 import EditPost from "./components/Post/EditPost";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route exact path="/" component={ArtistsView} />
+        <Route exact path="/" component={HomeView} />
+        <Route exact path="/home/:id" component={ArtistView} />
         <Route path="/login" component={LogIn} />
         <Route path="/signup" component={SignUp} />
-        <Route path="/posts" component={PostForm} />
-        <Route path="/artists" component={ArtistsView} />
+
         <Route path="/editpost" component={EditPost} />
       </div>
     );

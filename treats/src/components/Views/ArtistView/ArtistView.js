@@ -35,7 +35,7 @@ class ArtistView extends Component {
           userData: res.data[0].posts
         });
       })
-      .catch(err => console.err("Axios Error:", err));
+      .catch(err => console.log("Axios Error:", err));
   }
   logoutHandler = ev => {
     localStorage.removeItem("jwt");
