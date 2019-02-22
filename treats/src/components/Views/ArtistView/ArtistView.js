@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 
+import HomePage from "../../../HopePage";
 import ArtistHeader from "./ArtistHeader";
 import ArtistProfile from "./ArtistProfile";
 
@@ -49,6 +50,7 @@ class ArtistView extends Component {
           logoutHandler={this.logoutHandler}
           userId={this.state.userID}
         />
+        <HomePage />
         <ArtistProfile fullName={this.state.fullName} />
       </Fragment>
     );

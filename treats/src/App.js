@@ -3,7 +3,7 @@ import { Route, withRouter, NavLink, Link } from "react-router-dom";
 
 import HomeView from "./components/Views/GuestView/HomeView";
 import ArtistView from "./components/Views/ArtistView/ArtistView";
-
+import HopePage from "./HopePage";
 import LogIn from "./components/Views/LoginView/LoginView";
 import SignUp from "./components/Views/SignUpView/SignUp";
 
@@ -17,7 +17,7 @@ class App extends Component {
         <Route exact path="/home/:id" component={ArtistView} />
         <Route path="/login" component={LogIn} />
         <Route path="/signup" component={SignUp} />
-
+        <Route path="/home" component={HopePage} />
         <Route path="/editpost" component={EditPost} />
       </div>
     );

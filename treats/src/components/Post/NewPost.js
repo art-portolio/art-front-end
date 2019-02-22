@@ -31,7 +31,7 @@ const NewPost = props => {
       <Button
         className="create"
         onClick={ev =>
-          props.isUpdating ? props.editPost(ev) : props.newPost(ev)
+          props.isUpdating ? props.updatePost(ev) : props.newPost(ev)
         }
       >
         Submit
